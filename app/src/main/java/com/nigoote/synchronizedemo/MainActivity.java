@@ -15,31 +15,26 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
     EditText ProName;
     EditText ProQua;
     EditText ProPrice;
-    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         ProName = (EditText) findViewById(R.id.edtname);
         ProQua = (EditText) findViewById(R.id.edtquantity);
         ProPrice = (EditText) findViewById(R.id.edtprice);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
     }
 
     public void submitName(View view){
 
 
     }
+
+
 
         //this is the menu method
     @Override
