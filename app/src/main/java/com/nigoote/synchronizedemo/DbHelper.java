@@ -11,10 +11,11 @@ import java.util.Currency;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION =1;
-    private static final String CREATE_TABLE="CREATE TABLE "+DbContract.TABLE_NAME+
+    private static final String CREATE_TABLE="create table "+DbContract.TABLE_NAME+
             "(id integer primary key autoincrement,"+DbContract.NAME+" text,"+DbContract.QUANTITY+" text,"+DbContract.PRICE+" text,"+DbContract.SYNC_STATUS+
             " integer);";
-    private static  final  String DROP_TABLE="DROP TABLE if exists "+DbContract.TABLE_NAME;
+    private static  final  String DROP_TABLE="drop table if exists "+DbContract.TABLE_NAME;
+
 
     public DbHelper(Context context){
         super(context,DbContract.DATABASE_NAME,null,DATABASE_VERSION);
@@ -51,4 +52,6 @@ public class DbHelper extends SQLiteOpenHelper {
         database.update(DbContract.TABLE_NAME,contentValues,selection,selection_args);
 
     }
+
+
 }
