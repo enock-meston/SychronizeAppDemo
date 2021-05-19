@@ -31,14 +31,18 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public  void  saveToLocalDatabase(String name,String quantity,String price,int sync_status,SQLiteDatabase database){
+    public  boolean  saveToLocalDatabase(String name,String quantity,String price,int sync_status,SQLiteDatabase database){
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(DbContract.NAME,name);
         contentValues.put(DbContract.QUANTITY,quantity);
         contentValues.put(DbContract.PRICE,price);
         contentValues.put(DbContract.SYNC_STATUS,sync_status);
-        database.insert(DbContract.TABLE_NAME,null,contentValues);
+//        database.insert(DbContract.TABLE_NAME,null,contentValues);
+        this.getWritableDatabase().insertOrThrow(DbContract.TABLE_NAME,null,contentValues);
+        return true;
     }
+
     public Cursor readFromLocalDatabase(SQLiteDatabase database){
         String[] projection = {DbContract.NAME,DbContract.QUANTITY,DbContract.PRICE,DbContract.SYNC_STATUS};
         return (database.query(DbContract.TABLE_NAME,projection,null,null,null,null,null));

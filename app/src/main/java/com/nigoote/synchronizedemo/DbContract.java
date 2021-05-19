@@ -6,6 +6,7 @@ public class DbContract {
 
      public static final int SYNC_STATUS_OK=0;
      public static final int SYNC_STATUS_FAILED=1;
+     public static final String SERVER_URL="http://192.168.20.77/syncProduct/syncinfo.php";
 
      public static final String DATABASE_NAME="productdb";
      public static final String TABLE_NAME="tblproduct";

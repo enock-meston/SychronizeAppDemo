@@ -22,6 +22,9 @@ public class ViewProductList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product_list);
 
+        getSupportActionBar().setTitle("Product List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //DbHelper dbHelper= new DbHelper(this);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         layoutManager = new LinearLayoutManager(this);
@@ -36,11 +39,11 @@ public class ViewProductList extends AppCompatActivity {
 
     public void readFromLocalStorage(){
         arrayList.clear();
+
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase database= dbHelper.getReadableDatabase();
 
         Cursor cursor = dbHelper.readFromLocalDatabase(database);
-
         while (cursor.moveToNext()){
             String name=cursor.getString(cursor.getColumnIndex(DbContract.NAME));
             String quantity=cursor.getString(cursor.getColumnIndex(DbContract.QUANTITY));
